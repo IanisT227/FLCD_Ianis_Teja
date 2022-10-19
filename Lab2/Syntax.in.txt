@@ -17,6 +17,6 @@ printstmt ::= "write" "(" identifier")" | “write” “(“ constant “)”
 structstmt ::= stmtlist | ifstmt | whilestmt
 ifstmt ::= "checkIf(" condition ")" stmt ["else" stmt]
 whilestmt ::= "whileTrue(" condition ")" stmt “endWhileTrue”
-condition ::= expression RELATION expression
+condition ::= expression RELATION expression {"and" condition}
 stmtlist ::= stmt | stmt “;” stmtlist
-RELATION ::= "<" | "<=" | "=" | ">=" | ">"
+RELATION ::= "<" | "<=" | "=" | ">=" | ">" | "isNot"

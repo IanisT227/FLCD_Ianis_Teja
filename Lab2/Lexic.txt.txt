@@ -8,12 +8,14 @@ c. Decimal digits(0-9)
 Lexic:
 
 a.Special symbols, representing:
--operators + - * / < <= = >= isNot and
--separators : () [] space {}
+-operators + - * / < <= = >= 
+-separators : () [] space {} ; 
 -reserved words:
-var read write whileTrue endWhileTrue checkIf Integer String List isNot
+var read write whileTrue endWhileTrue checkIf Integer String List isNot and
 
 b.identifiers
+
+- a sequence of letters
 letter::= A | B | C |... |Z | a | b | c | … | z |
 identifier::= letter | letter{letter}
 
@@ -22,7 +24,7 @@ c.constants
 digit::= 0 | 1 | … | 9
 nonZeroDigit::= 1 | 2 | … | 9
 sign::= - | +
-constNumber::= digit | nonZeroDigit{digit} | sign nonZeroDigit {digit}
+constNumber::= [sign] nonZeroDigit{digit} | "0"
 2. String - rule:
 constString::= “string”
 string::= char{string}

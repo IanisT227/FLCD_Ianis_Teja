@@ -21,6 +21,7 @@ isNot
 space 
 " "
 var
+and
 read 
 write 
 whileTrue 
