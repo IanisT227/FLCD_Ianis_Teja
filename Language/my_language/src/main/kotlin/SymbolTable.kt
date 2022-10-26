@@ -1,17 +1,12 @@
 class SymbolTable(val size: Int = 50) {
-    private val identifierHashTable = HashTable<String>(50)
-    private val constantHashTable = HashTable<String>(size)
+    private val hashTable = HashTable<String>(size)
 
-    fun addIdentifier(idName: String) = identifierHashTable.addItem(idName)
+    fun addIdentifier(idName: String) = hashTable.addItem(idName)
 
-    fun addConstant(stringConstant: String) = constantHashTable.addItem(stringConstant)
-
-    fun getIdentifier(idName: String) = identifierHashTable.getItem(idName)
-
-    fun getConstant(stringConstant: String) = constantHashTable.getItem(stringConstant)
+    fun getIdentifier(idName: String) = hashTable.getItem(idName)
 
     override fun toString(): String {
-        return "SymbolTable(size=$size, identifierHashTable=$identifierHashTable, constantHashTable=$constantHashTable)"
+        return "SymbolTable(size=$size, identifierHashTable=$hashTable)"
     }
 
 //a single hashTable implementation
