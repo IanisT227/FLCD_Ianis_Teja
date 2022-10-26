@@ -1,0 +1,33 @@
+Alphabet:
+
+a. Upper (A-Z) and lower case letters(a-z) of the english alphabet
+b. Tilda character “~”
+c. Decimal digits(0-9)
+
+
+Lexic:
+
+a.Special symbols, representing:
+-operators + - * / < <= = >= 
+-separators : () [] space {} ; 
+-reserved words:
+var read write whileTrue endWhileTrue checkIf Integer String List isNot and
+
+b.identifiers
+
+- a sequence of letters
+letter::= A | B | C |... |Z | a | b | c | … | z |
+identifier::= letter | letter{letter}
+
+c.constants
+1. Integer - rule:
+digit::= 0 | 1 | … | 9
+nonZeroDigit::= 1 | 2 | … | 9
+sign::= - | +
+constNumber::= [sign] nonZeroDigit{digit} | "0"
+2. String - rule:
+constString::= “string”
+string::= char{string}
+char::= letter|digit
+3. List - rule
+list::= string {string} | number {number}

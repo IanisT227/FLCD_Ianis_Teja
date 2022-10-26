@@ -1,0 +1,22 @@
+Syntax.in
+
+Program starts and ends with ~
+
+Syntactic rules:
+
+declaration::= var <identifier> : <type>
+type::= Integer|String
+arraydecl::= var <identifier> : List(<type>, <number>)
+stmt ::= simplstmt | structstmt
+simplstmt ::= assignstmt | printstmt
+assignstmt ::= “read” “(“ identifier “,” (identifier | constant) “)”
+expression ::= expression "+" term | term
+term ::= term ["*”|"/”] factor | factor
+factor ::= "(" expression ")" | IDENTIFIER
+printstmt ::= "write" "(" identifier")" | “write” “(“ constant “)”
+structstmt ::= stmtlist | ifstmt | whilestmt
+ifstmt ::= "checkIf(" condition ")" stmt ["else" stmt]
+whilestmt ::= "whileTrue(" condition ")" stmt “endWhileTrue”
+condition ::= expression RELATION expression {"and" condition}
+stmtlist ::= stmt | stmt “;” stmtlist
+RELATION ::= "<" | "<=" | "=" | ">=" | ">" | "isNot"
