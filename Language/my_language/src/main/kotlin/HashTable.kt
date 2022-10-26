@@ -32,4 +32,10 @@ class HashTable<T>(private val size: Int) {
         hashTable[posInHashTable].add(elem)
         return Pair(posInHashTable, posInRow)
     }
+
+    override fun toString(): String {
+        return "HashTable(size=$size, hashTable=${hashTable.contentToString()})"
+    }
+
+
 }

@@ -8,6 +8,4 @@ class SymbolTable(val size: Int = 50) {
     override fun toString(): String {
         return "SymbolTable(size=$size, identifierHashTable=$hashTable)"
     }
-
-//a single hashTable implementation
 }
