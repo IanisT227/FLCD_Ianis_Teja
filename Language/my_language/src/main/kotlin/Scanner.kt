@@ -27,7 +27,7 @@ class Scanner {
     fun scanProgram(file: File) {
         file.useLines { lines ->
             lines.forEach {
-                val words = it.split("[\\s.;:,()<>{}]".toRegex())
+                val words = it.split("[\\s.;:,()\\[\\]{}<>]".toRegex())
 
                 println(words)
                 words.forEach {
