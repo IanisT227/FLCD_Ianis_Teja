@@ -1,0 +1,17 @@
+~
+var nr: Integer;
+var message: String;
+var divisor: Integer;
+read(nr, 2022);
+read(divisor, 2);
+checkIf(nr<2)
+read(message, “Not Prime”);
+whileTrue(nr / 2 - 1 > divisor and nr % divisor isNot 0)
+read(divisor, divisor + 1);
+endWhileTrue
+checkIf(divisor isNot nr / 2)
+read(message, “Prime”);
+else
+read(message,”Not prime”);
+write(message);
+~

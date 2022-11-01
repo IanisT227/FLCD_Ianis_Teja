@@ -15,13 +15,15 @@ class Scanner {
             constants.addIdentifier(value)
             pif.add(Pair(value, constants.getIdentifier(value) ?: Pair(-1, -1)))
             return
-        } else if (isIdentifier(value)) {
+        }
+
+        if (isIdentifier(value)) {
             identifiers.addIdentifier(value)
             pif.add(Pair(value, identifiers.getIdentifier(value) ?: Pair(-1, -1)))
             return
-        } else {
-            println("Error at $value")
         }
+
+        println("Error at $value")
     }
 
     fun scanProgram(file: File) {
@@ -38,7 +40,7 @@ class Scanner {
     }
 
     private fun isToken(toCheck: String): Boolean {
-        File("C:\\Users\\Ianis Teja\\Desktop\\Fac\\anul 3 sem 1\\LFTC\\FLCD_Ianis_Teja\\Language\\my_language\\src\\main\\resources\\Tokens.in").useLines { lines ->
+        File("D:\\fac\\Anul 3 sem 1\\FLCD_Ianis_Teja\\Language\\my_language\\src\\main\\resources\\Tokens.in").useLines { lines ->
             lines.forEach {
                 if (it == toCheck)
                     return true
@@ -55,10 +57,9 @@ class Scanner {
     private fun isIdentifier(toCheck: String): Boolean {
         val regex = "[0-9!\"#$%&'()*+,-./:;\\\\<=>?@\\[\\]^_`{|}~]".toRegex()
         return !toCheck.contains(regex)
-
     }
 
     override fun toString(): String {
-        return "Scanner(identifiers=$identifiers, constants=$constants, pif=$pif)"
+        return "Scanner(identifiers=$identifiers\n constants=$constants\n pif=$pif)"
     }
 }
