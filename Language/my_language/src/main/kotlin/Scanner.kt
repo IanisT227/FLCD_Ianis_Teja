@@ -40,7 +40,7 @@ class Scanner {
     }
 
     private fun isToken(toCheck: String): Boolean {
-        File("D:\\fac\\Anul 3 sem 1\\FLCD_Ianis_Teja\\Language\\my_language\\src\\main\\resources\\Tokens.in").useLines { lines ->
+        File("C:\\Users\\Ianis Teja\\Desktop\\Fac\\anul 3 sem 1\\LFTC\\FLCD_Ianis_Teja\\Language\\my_language\\src\\main\\resources\\Tokens.in").useLines { lines ->
             lines.forEach {
                 if (it == toCheck)
                     return true
