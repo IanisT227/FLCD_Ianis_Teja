@@ -7,14 +7,14 @@ var counter: Integer;
 read(counter, 0);
 var divisor: Integer;
 var message: String;
-read(message, “Not Prime”);
+read(message, "NonPrime");
 whileTrue(counter < size)
 read(divisor, 2);
 whileTrue(itemList[counter] / 2 - 1 > divisor and itemList[counter] % divisor isNot 0)
 read(divisor, divisor + 1);
 endWhileTrue
 checkIf(divisor isNot itemList[counter] / 2)
-read(message, “Prime”);
+read(message, "Prime");
 read(counter, counter + 1);
 endWhileTrue
 write(message);
