@@ -1,11 +1,12 @@
+import java.io.File
+
 fun main() {
-    val symbolTable = SymbolTable(50)
-    println(symbolTable.addIdentifier("heyy"))
-    println(symbolTable.addIdentifier("goobye"))
-    println(symbolTable.addIdentifier("23"))
-    println(symbolTable.addIdentifier("4"))
-    println(symbolTable.addIdentifier("32"))
-    println("\n")
-    println(symbolTable.getIdentifier("heyy"))
-    println(symbolTable.toString())
+    val scanner = Scanner()
+    try {
+        scanner.scanProgram(File("D:\\fac\\Anul 3 sem 1\\FLCD_Ianis_Teja\\Language\\my_language\\src\\main\\resources\\p1err.txt"))
+    } catch (e: Exception) {
+        println("Exception: $e")
+    } finally {
+        println(scanner.toString())
+    }
 }
