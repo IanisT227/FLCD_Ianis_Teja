@@ -1,6 +1,6 @@
 import java.io.File
 
-class FiniteAutomata(val file: String) {
+class FiniteAutomata(private val file: String) {
 
     private val allStates: MutableList<String> = mutableListOf()
     private val inputSymbols: MutableList<String> = mutableListOf()
@@ -8,7 +8,7 @@ class FiniteAutomata(val file: String) {
     private val finalStates: MutableList<String> = mutableListOf()
     private val transitionFunctions: MutableList<Pair<Pair<String, String>, String>> = mutableListOf()
 
-    fun readLines() {
+    private fun readLines() {
         for (line in File(file).readLines()) {
             when ("^[a-z_?]+=".toRegex().find(line)?.groups?.get(0)?.value) {
                 "states=" -> {
@@ -16,16 +16,12 @@ class FiniteAutomata(val file: String) {
                     allStatesString.split(",").forEach {
                         allStates.add(it)
                     }
-                    println(allStates)
-                    println(allStates[0])
-
                 }
                 "input_symbols=" -> {
                     val allInputSymbols = line.substringAfter("=").trim()
                     allInputSymbols.split(",").forEach {
                         inputSymbols.add(it)
                     }
-                    println(inputSymbols)
                 }
                 "initial_state=" -> {
                     val state = line.substringAfter("=").trim()
@@ -34,8 +30,6 @@ class FiniteAutomata(val file: String) {
                     } else {
                         initialState = state
                     }
-
-                    println("Initial State="+initialState)
                 }
                 "final_states=" -> {
                     val allFinalStates = line.substringAfter("=").trim()
@@ -46,12 +40,70 @@ class FiniteAutomata(val file: String) {
                 }
                 "transition_functions=" -> {
                     val allTransitionFunctions = line.substringAfter("=").trim()
-                    println(allTransitionFunctions)
                     allTransitionFunctions.split(";").forEach {
-                        println(it)
+                        val transitionFunctionFormatted = it.slice(1 until it.length - 1).trim()
+                        val transitionItems = transitionFunctionFormatted.split(", *".toRegex())
+                        transitionFunctions.add(Pair(Pair(transitionItems[0], transitionItems[1]), transitionItems[2]))
                     }
+                }
+                else -> {
+                    println("Invalid line!")
                 }
             }
         }
+    }
+
+    private fun checkSequence(sequence: String): Boolean {
+        var currentState = initialState
+        for (item in sequence) {
+            var found = false
+            for (transition in transitionFunctions) {
+                if (transition.first.first == currentState && transition.first.second == item.toString()) {
+                    currentState = transition.second
+                    found = true
+                    break
+                }
+            }
+            if (!found)
+                return false
+        }
+        return currentState in finalStates
+    }
+
+    fun showMenu() {
+        readLines()
+        println(
+            "Hi!\n" +
+                    "Press 1 to see the Finite Automata\n" +
+                    "Press 2 to write a sequence and check it\n" +
+                    "Press 0 to exit\n"
+        )
+        while (true) {
+            println("\nYour input:")
+            when (readLine()!!.trim()) {
+                "1" -> {
+                    println(toString())
+                }
+                "2" -> {
+                    println("Your sequence: ")
+                    val sequence = readLine()!!.trim()
+                    if (checkSequence(sequence))
+                        println("Your sequence is correct!")
+                    else
+                        println("Your sequence is incorrect!")
+                }
+                "0" -> {
+                    println("Thanks for using the app! :)")
+                    break
+                }
+                else -> {
+                    println("Invalid Input!")
+                }
+            }
+        }
+    }
+
+    override fun toString(): String {
+        return "FiniteAutomata(\n\tallStates=$allStates,\n\tinputSymbols=$inputSymbols,\n\tinitialState='$initialState',\n\tfinalStates=$finalStates,\n\ttransitionFunctions=$transitionFunctions)"
     }
 }

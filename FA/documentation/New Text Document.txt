@@ -1,0 +1,2 @@
+documentatie: finite set of states, set of input symbols, initial state, set of final states, transition function
+program: meniu + citire din fisier
