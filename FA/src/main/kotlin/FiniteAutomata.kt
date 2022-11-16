@@ -34,7 +34,11 @@ class FiniteAutomata(private val file: String) {
                 "final_states=" -> {
                     val allFinalStates = line.substringAfter("=").trim()
                     allFinalStates.split(",").forEach {
-                        finalStates.add(it)
+                        if (it in allStates) {
+                            finalStates.add(it)
+                        } else
+                            println("the symbol $it cannot be found in the list of all states")
+
                     }
 
                 }
