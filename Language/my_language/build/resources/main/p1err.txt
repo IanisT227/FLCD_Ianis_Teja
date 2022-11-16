@@ -1,16 +1,16 @@
 #
-var a: Integer;
-var b: Integer;
-var 5c: Integer;
-var maxi: Integer;
-read(a, 8);
-read(b,4);
-read(c,1234);
-checkIf( a<b )
-read(maxi, b);
+var a : Integer ;
+var b : Integer ;
+var c : Integer ;
+var 5c : Integer ;
+read ( a , 8 ) ;
+read ( b , 4 ) ;
+read (c , 2004 ) ;
+checkIf ( a < b )
+read ( maxi , b ) ;
 else
-read(maxi, c);
-checkIf(maxi<c)
-read(maxi, c);
-write(maxi);
+read ( maxi , c ) ;
+checkIf ( maxi < c )
+read ( maxi , c ) ;
+write ( maxi ) ;
 ~

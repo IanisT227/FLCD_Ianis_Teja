@@ -1,0 +1,5 @@
+states= p,q,r
+input_symbols= 0,1
+initial_state= p
+final_states= r,p
+transition_functions= (p,0,q);(q,1,q);(p,1,r);(q,0,r)
